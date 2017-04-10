@@ -10,21 +10,25 @@ Demo can be found at http://CodeSeven.github.com/toastr
 
 ## Quick start
 
-###3 Easy Steps
+### 3 Easy Steps
 For other API calls, see the [demo](http://CodeSeven.github.com/toastr).
 
 1. update gemfile: gem 'toastrjs-rails'
 
 2. Add toastr to application.css and application.js:
 
-    *= require toastr
+    *= require toastr.min
 
-    //= require toastr
+    //= require toastr.min
 
 3. use toastr to display a toast for info, success, warning or error
 
         // Display an info toast with no title
         toastr.info('Are you the 6 fingered man?')
+
+4. You can insert the following helper method in the view template where the flash messages are shown:
+
+        <%= flash_toastr %>        
 
 ### Other Options
 
