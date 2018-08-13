@@ -5,7 +5,7 @@
 This gem is wrapped for Rails asset-pipeline
 
 ## Current Version
-2.1.3.1
+2.1.3.2
 
 > **Note** : This version is compatible for toastr version 2.1.3
 
@@ -30,6 +30,16 @@ For other API calls, see the [demo](http://CodeSeven.github.com/toastr).
 4. You can insert the following helper method in the view template where the flash messages are shown:
 
         <%= flash_toastr %>        
+
+    and this erb code is rendered as follows:
+
+        <script>
+          if (!(document.documentElement.hasAttribute(\"data-turbolinks-preview\"))) {
+            toastr.#{type}('#{message}', '', { 'closeButton': true });
+          }
+        </script>
+
+    > **Note**: `if` confition is for preventing the twice firing of javascript code in body tag due to Turbolinks 5    
 
 5. Use toastr to display a toast for info, success, warning or error in javascript file:
 
