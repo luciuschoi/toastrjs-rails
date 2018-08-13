@@ -6,7 +6,10 @@ module Toastrjs
         flash.each do |type, message|
           type = 'success' if type == 'notice'
           type = 'error'   if type == 'alert'
-          text = "<script>toastr.#{type}('#{message}','',{ 'closeButton': true });</script>"
+          text = "<script>"
+          text += "if (!(document.documentElement.hasAttribute(\"data-turbolinks-preview\"))) {"
+          text += "toastr.#{type}('#{message}','',{ 'closeButton': true });"
+          text += "}</script>"
           flash_messages << text.html_safe if message
         end
         flash_messages.join("\n").html_safe
